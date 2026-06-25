@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "common",
+    "label": "Common words",
+    "maori_label": "Kupu auau",
+    "description": "Everyday vocabulary used frequently in conversation.",
+    "colour": "forest"
+  },
+  {
+    "slug": "whanau",
+    "label": "Family & relationships",
+    "maori_label": "Whānau",
+    "description": "Words for family members and relationships.",
+    "colour": "earth"
+  },
+  {
+    "slug": "emotions",
+    "label": "Emotions & feelings",
+    "maori_label": "Ngā kare-ā-roto",
+    "description": "Words describing feelings and emotional states.",
+    "colour": "moana"
+  },
+  {
+    "slug": "nature",
+    "label": "Nature & environment",
+    "maori_label": "Te ao tūroa",
+    "description": "Land, sea, sky, and the natural world.",
+    "colour": "forest"
+  },
+  {
+    "slug": "body",
+    "label": "Body",
+    "maori_label": "Te tinana",
+    "description": "Parts of the human body.",
+    "colour": "earth"
+  },
+  {
+    "slug": "numbers",
+    "label": "Numbers",
+    "maori_label": "Ngā tau",
+    "description": "Numbers and counting.",
+    "colour": "moana"
+  },
+  {
+    "slug": "colours",
+    "label": "Colours",
+    "maori_label": "Ngā tae",
+    "description": "Colours and shades.",
+    "colour": "earth"
+  },
+  {
+    "slug": "food",
+    "label": "Food",
+    "maori_label": "Kai",
+    "description": "Food, drink, and eating.",
+    "colour": "earth"
+  },
+  {
+    "slug": "actions",
+    "label": "Actions & verbs",
+    "maori_label": "Ngā mahi",
+    "description": "Verbs and doing words.",
+    "colour": "forest"
+  },
+  {
+    "slug": "values",
+    "label": "Values & concepts",
+    "maori_label": "Ngā uara",
+    "description": "Tikanga, cultural values, and philosophical concepts.",
+    "colour": "moana"
+  },
+  {
+    "slug": "waka-ama",
+    "label": "Waka ama",
+    "maori_label": "Waka ama",
+    "description": "Outrigger canoe paddling and water sports.",
+    "colour": "moana"
+  },
+  {
+    "slug": "kura",
+    "label": "School & learning",
+    "maori_label": "Kura",
+    "description": "Words used in educational and learning contexts.",
+    "colour": "forest"
+  }
+]

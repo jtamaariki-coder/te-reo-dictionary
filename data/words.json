@@ -1,0 +1,1071 @@
+[
+  {
+    "id": "aroha",
+    "maori": "aroha",
+    "english": ["love", "compassion", "empathy", "affection"],
+    "pronunciation": "ah-roh-hah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["emotions", "values", "common"],
+    "definition": "The feeling of deep affection, compassion, and empathy toward others. Aroha is central to Māori values and relationships.",
+    "example_sentences": [
+      { "maori": "He aroha whakatō, he aroha puta mai.", "english": "If you sow love, love will be returned." }
+    ],
+    "related_words": ["manaaki", "ngākau", "atawhai"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "whanau",
+    "maori": "whānau",
+    "english": ["family", "extended family", "to be born"],
+    "pronunciation": "fah-noh",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["whanau", "common", "values"],
+    "definition": "Extended family group. Also a verb meaning to be born or to give birth. Whānau is the primary social unit in Māori society.",
+    "example_sentences": [
+      { "maori": "Ko tōku whānau tōku kaha.", "english": "My family is my strength." }
+    ],
+    "related_words": ["hapū", "iwi", "māmā", "pāpā"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "kai",
+    "maori": "kai",
+    "english": ["food", "to eat", "meal"],
+    "pronunciation": "kye",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["food", "common"],
+    "definition": "Food; also used as a verb meaning to eat. Kai is central to Māori hospitality and manaakitanga.",
+    "example_sentences": [
+      { "maori": "Kei te kai au.", "english": "I am eating." },
+      { "maori": "He aha te kai?", "english": "What is the food?" }
+    ],
+    "related_words": ["inu", "hākari", "hāngī"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "moana",
+    "maori": "moana",
+    "english": ["ocean", "sea", "large lake"],
+    "pronunciation": "moh-ah-nah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature"],
+    "definition": "The open sea, ocean, or a large body of water. The moana is deeply significant in Māori culture as an ancestral pathway and source of sustenance.",
+    "example_sentences": [
+      { "maori": "Ka hoe ia ki te moana.", "english": "He paddled out to the sea." }
+    ],
+    "related_words": ["awa", "roto", "tai", "ngā tai"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "maunga",
+    "maori": "maunga",
+    "english": ["mountain", "peak"],
+    "pronunciation": "moh-ung-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature"],
+    "definition": "A mountain or high peak. Maunga are often the ancestor mountains of iwi and central to tribal identity.",
+    "example_sentences": [
+      { "maori": "Ko Taranaki tōku maunga.", "english": "Taranaki is my mountain." }
+    ],
+    "related_words": ["puke", "tihi", "whenua"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "awa",
+    "maori": "awa",
+    "english": ["river", "channel", "stream", "valley"],
+    "pronunciation": "ah-wah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature"],
+    "definition": "A river, stream, or channel. Rivers are ancestral connectors and named as tīpuna (ancestors) by many iwi.",
+    "example_sentences": [
+      { "maori": "Ka rere te awa ki te moana.", "english": "The river flows to the sea." }
+    ],
+    "related_words": ["moana", "roto", "wai"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "ngahere",
+    "maori": "ngahere",
+    "english": ["forest", "bush", "jungle"],
+    "pronunciation": "ngah-heh-reh",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature"],
+    "definition": "Forest or bush. The ngahere is a taonga (treasure) — a rich ecosystem and source of rongoā (medicine), food, and building materials.",
+    "example_sentences": [
+      { "maori": "He taonga nui te ngahere ki a mātou.", "english": "The forest is a great treasure to us." }
+    ],
+    "related_words": ["rākau", "ara", "maunga"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "turangawaewae",
+    "maori": "tūrangawaewae",
+    "english": ["place to stand", "home ground", "a place to belong"],
+    "pronunciation": "too-rung-ah-why-eh-why-eh",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values"],
+    "definition": "Literally 'a standing place for the feet' — the place where one belongs, where one has the right to stand and speak. Usually the land of one's iwi or hapū.",
+    "example_sentences": [
+      { "maori": "Ko Waikato tōku tūrangawaewae.", "english": "Waikato is my place to stand." }
+    ],
+    "related_words": ["whenua", "iwi", "hapū", "mana whenua"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "manaakitanga",
+    "maori": "manaakitanga",
+    "english": ["hospitality", "generosity", "caring for others", "showing respect"],
+    "pronunciation": "mah-nah-ah-kee-tung-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "common"],
+    "definition": "The practice of showing respect, generosity, and care for others — especially guests. A core Māori value expressed through hospitality and service.",
+    "example_sentences": [
+      { "maori": "Ko te manaakitanga te mea nui.", "english": "Hospitality is the most important thing." }
+    ],
+    "related_words": ["aroha", "mana", "tika", "pono"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "kaitiakitanga",
+    "maori": "kaitiakitanga",
+    "english": ["guardianship", "stewardship", "custodianship of the natural world"],
+    "pronunciation": "kye-tee-ah-kee-tung-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "nature"],
+    "definition": "The responsibility to guard, protect, and care for the natural world. Kaitiakitanga is the obligation passed down from the atua (gods) to protect the taiao (natural environment).",
+    "example_sentences": [
+      { "maori": "He kaitiaki tātou o te taiao.", "english": "We are guardians of the natural world." }
+    ],
+    "related_words": ["kaitiaki", "taiao", "tangaroa", "tāne"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "whakapapa",
+    "maori": "whakapapa",
+    "english": ["genealogy", "lineage", "to lay one upon another"],
+    "pronunciation": "fah-kah-pah-pah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "common"],
+    "definition": "Genealogy; the layering of one upon another. Whakapapa links people to their ancestors, the natural world, and the atua. It is the framework through which all knowledge is organised.",
+    "example_sentences": [
+      { "maori": "Ko te whakapapa te ara ki ōu tīpuna.", "english": "Genealogy is the pathway to your ancestors." }
+    ],
+    "related_words": ["tīpuna", "iwi", "hapū", "whānau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "waka",
+    "maori": "waka",
+    "english": ["canoe", "vessel", "vehicle"],
+    "pronunciation": "wah-kah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["waka-ama", "common"],
+    "definition": "A canoe or vessel. Waka were the vessels that carried Māori ancestors across the Pacific to Aotearoa. Today waka ama (outrigger canoes) remain an important taonga.",
+    "example_sentences": [
+      { "maori": "Ka hoe tātou i runga i te waka.", "english": "We will paddle together in the canoe." }
+    ],
+    "related_words": ["hoe", "ama", "ihu", "tauihu"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "hoe",
+    "maori": "hoe",
+    "english": ["paddle", "to paddle", "oar"],
+    "pronunciation": "hoh-eh",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["waka-ama", "actions"],
+    "definition": "A paddle or oar; also the verb meaning to paddle. Hoe is fundamental to waka ama — the paddlers call 'hoe!' to synchronise strokes.",
+    "example_sentences": [
+      { "maori": "Hoe! Hoe! Hoe!", "english": "Paddle! Paddle! Paddle!" },
+      { "maori": "Homai te hoe.", "english": "Pass me the paddle." }
+    ],
+    "related_words": ["waka", "ama", "tauihu"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "ama",
+    "maori": "ama",
+    "english": ["outrigger float", "outrigger"],
+    "pronunciation": "ah-mah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["waka-ama"],
+    "definition": "The float or outrigger attached to the side of a waka ama. The ama provides stability on the water.",
+    "example_sentences": [
+      { "maori": "Kei raro te ama i te wai.", "english": "The outrigger float is in the water." }
+    ],
+    "related_words": ["waka", "hoe", "ihu", "kia"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "ihu",
+    "maori": "ihu",
+    "english": ["nose", "bow of a canoe", "prow"],
+    "pronunciation": "ee-hoo",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["waka-ama", "body"],
+    "definition": "The nose or the bow (front) of a canoe. The ihu waka (prow) is often carved with intricate designs representing the waka's identity.",
+    "example_sentences": [
+      { "maori": "Ko te ihu o te waka e aro ana ki te rā.", "english": "The prow of the canoe faces the sun." }
+    ],
+    "related_words": ["waka", "hoe", "ama"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "kia-ora",
+    "maori": "kia ora",
+    "english": ["hello", "thank you", "be well", "cheers"],
+    "pronunciation": "kee-ah oh-rah",
+    "audio": null,
+    "part_of_speech": "phrase",
+    "categories": ["common"],
+    "definition": "A versatile greeting meaning 'be well' or 'hello'. Also used to express thanks or acknowledgement. The most widely used Māori phrase in Aotearoa New Zealand.",
+    "example_sentences": [
+      { "maori": "Kia ora! Kei te pēhea koe?", "english": "Hello! How are you?" },
+      { "maori": "Kia ora mō tō āwhina.", "english": "Thank you for your help." }
+    ],
+    "related_words": ["tēnā koe", "mōrena", "ka pai"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "tena-koe",
+    "maori": "tēnā koe",
+    "english": ["greetings to you (one person)", "hello (formal)"],
+    "pronunciation": "teh-nah koh-eh",
+    "audio": null,
+    "part_of_speech": "phrase",
+    "categories": ["common"],
+    "definition": "A formal greeting directed at one person. More respectful than kia ora, typically used in formal or ceremonial contexts. Tēnā kōrua (two people), tēnā koutou (three or more).",
+    "example_sentences": [
+      { "maori": "Tēnā koe, e hoa.", "english": "Greetings to you, friend." }
+    ],
+    "related_words": ["kia ora", "tēnā kōrua", "tēnā koutou", "mōrena"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "kei-te-pehea-koe",
+    "maori": "kei te pēhea koe?",
+    "english": ["how are you?"],
+    "pronunciation": "kay teh peh-heh-ah koh-eh",
+    "audio": null,
+    "part_of_speech": "phrase",
+    "categories": ["common"],
+    "definition": "A common greeting asking how someone is. The response is typically 'kei te pai' (I'm well/good) or 'kei te māuiui' (I'm unwell).",
+    "example_sentences": [
+      { "maori": "Kei te pēhea koe? — Kei te pai, ā koe?", "english": "How are you? — I'm well, and you?" }
+    ],
+    "related_words": ["kia ora", "kei te pai", "pai"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "ka-pai",
+    "maori": "ka pai",
+    "english": ["good", "well done", "great", "excellent"],
+    "pronunciation": "kah pye",
+    "audio": null,
+    "part_of_speech": "phrase",
+    "categories": ["common"],
+    "definition": "An expression of approval or praise. Can be used to mean 'good', 'well done', 'excellent', or 'that's fine'. Widely used across Aotearoa.",
+    "example_sentences": [
+      { "maori": "Ka pai tōu mahi!", "english": "Well done / good work!" }
+    ],
+    "related_words": ["pai", "tino pai", "āe"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "tahi",
+    "maori": "tahi",
+    "english": ["one", "together", "alone"],
+    "pronunciation": "tah-hee",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers", "common"],
+    "definition": "The number one. Also used to mean 'together' or 'as one' in phrases like 'kotahi tātou' (we are one).",
+    "example_sentences": [
+      { "maori": "Ko tahi tēnei.", "english": "This is one." }
+    ],
+    "related_words": ["rua", "toru", "whā", "rima"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "rua",
+    "maori": "rua",
+    "english": ["two", "pit", "storage pit"],
+    "pronunciation": "roo-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers"],
+    "definition": "The number two. Also refers to a pit or storage house (rua kūmara — sweet potato storage pit).",
+    "example_sentences": [
+      { "maori": "E rua ngā kōtiro.", "english": "There are two girls." }
+    ],
+    "related_words": ["tahi", "toru", "whā"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "toru",
+    "maori": "toru",
+    "english": ["three"],
+    "pronunciation": "toh-roo",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers"],
+    "definition": "The number three.",
+    "example_sentences": [
+      { "maori": "E toru ngā tamariki.", "english": "There are three children." }
+    ],
+    "related_words": ["tahi", "rua", "whā", "rima"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "wha",
+    "maori": "whā",
+    "english": ["four"],
+    "pronunciation": "fah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers"],
+    "definition": "The number four.",
+    "example_sentences": [
+      { "maori": "E whā ngā waka.", "english": "There are four canoes." }
+    ],
+    "related_words": ["toru", "rima", "ono"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "rima",
+    "maori": "rima",
+    "english": ["five", "hand"],
+    "pronunciation": "ree-mah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers", "body"],
+    "definition": "The number five. Also the word for hand, as a hand has five fingers.",
+    "example_sentences": [
+      { "maori": "E rima ngā ringaringa.", "english": "There are five fingers." }
+    ],
+    "related_words": ["whā", "ono", "ringaringa"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "ono",
+    "maori": "ono",
+    "english": ["six"],
+    "pronunciation": "oh-noh",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers"],
+    "definition": "The number six.",
+    "example_sentences": [
+      { "maori": "E ono ngā rā o te wiki.", "english": "There are six days of the week (counting work days)." }
+    ],
+    "related_words": ["rima", "whitu", "waru"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "whitu",
+    "maori": "whitu",
+    "english": ["seven"],
+    "pronunciation": "fee-too",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers"],
+    "definition": "The number seven.",
+    "example_sentences": [
+      { "maori": "E whitu ngā rā o te wiki.", "english": "There are seven days in a week." }
+    ],
+    "related_words": ["ono", "waru", "iwa"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "waru",
+    "maori": "waru",
+    "english": ["eight"],
+    "pronunciation": "wah-roo",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers"],
+    "definition": "The number eight.",
+    "example_sentences": [
+      { "maori": "E waru ngā tāne i tō mātou kapa haka.", "english": "There are eight men in our kapa haka group." }
+    ],
+    "related_words": ["whitu", "iwa", "tekau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "iwa",
+    "maori": "iwa",
+    "english": ["nine"],
+    "pronunciation": "ee-wah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers"],
+    "definition": "The number nine.",
+    "example_sentences": [
+      { "maori": "E iwa ngā hēki.", "english": "There are nine eggs." }
+    ],
+    "related_words": ["waru", "tekau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "tekau",
+    "maori": "tekau",
+    "english": ["ten"],
+    "pronunciation": "teh-kou",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["numbers"],
+    "definition": "The number ten. Forms the basis of higher numbers: tekau mā tahi (eleven), tekau mā rua (twelve), etc.",
+    "example_sentences": [
+      { "maori": "E tekau ngā tamariki i te akomanga.", "english": "There are ten children in the classroom." }
+    ],
+    "related_words": ["iwa", "rua tekau", "kotahi rau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "ma",
+    "maori": "mā",
+    "english": ["white", "clean", "pure"],
+    "pronunciation": "mah",
+    "audio": null,
+    "part_of_speech": "adjective",
+    "categories": ["colours"],
+    "definition": "White; also meaning clean or pure.",
+    "example_sentences": [
+      { "maori": "He mā te kākahu.", "english": "The clothes are white/clean." }
+    ],
+    "related_words": ["mangu", "whero", "kākāriki"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "mangu",
+    "maori": "mangu",
+    "english": ["black", "dark", "dark-coloured"],
+    "pronunciation": "mung-goo",
+    "audio": null,
+    "part_of_speech": "adjective",
+    "categories": ["colours"],
+    "definition": "Black or dark in colour. Also pango or kōura.",
+    "example_sentences": [
+      { "maori": "He mangu tōna kākahu.", "english": "Her clothing is black." }
+    ],
+    "related_words": ["ma", "whero", "pango"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "whero",
+    "maori": "whero",
+    "english": ["red"],
+    "pronunciation": "feh-roh",
+    "audio": null,
+    "part_of_speech": "adjective",
+    "categories": ["colours"],
+    "definition": "Red. Associated with blood, the rising sun, and vitality.",
+    "example_sentences": [
+      { "maori": "He whero te rara o te kākahu.", "english": "The stripe on the garment is red." }
+    ],
+    "related_words": ["karaka", "kōwhai", "mangu"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "kakariki",
+    "maori": "kākāriki",
+    "english": ["green", "small green parakeet"],
+    "pronunciation": "kah-kah-ree-kee",
+    "audio": null,
+    "part_of_speech": "adjective",
+    "categories": ["colours", "nature"],
+    "definition": "Green in colour; also the name for the native green parakeet of Aotearoa. The colour takes its name from the bird.",
+    "example_sentences": [
+      { "maori": "He kākāriki ngā rau o te rākau.", "english": "The leaves of the tree are green." }
+    ],
+    "related_words": ["ma", "whero", "kikorangi"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "kikorangi",
+    "maori": "kikorangi",
+    "english": ["blue"],
+    "pronunciation": "kee-koh-rung-ee",
+    "audio": null,
+    "part_of_speech": "adjective",
+    "categories": ["colours"],
+    "definition": "Blue. The colour of the sky (rangi) reflected in water.",
+    "example_sentences": [
+      { "maori": "He kikorangi te rangi āpōpō.", "english": "The sky tomorrow will be blue." }
+    ],
+    "related_words": ["kākāriki", "ma", "whero"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "mama",
+    "maori": "māmā",
+    "english": ["mother", "mum", "mama"],
+    "pronunciation": "mah-mah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["whanau", "common"],
+    "definition": "Mother; mum. One of the first words children learn.",
+    "example_sentences": [
+      { "maori": "Ko Hera tōku māmā.", "english": "Hera is my mother." }
+    ],
+    "related_words": ["pāpā", "koroua", "kuia", "whānau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "papa",
+    "maori": "pāpā",
+    "english": ["father", "dad", "papa"],
+    "pronunciation": "pah-pah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["whanau", "common"],
+    "definition": "Father; dad. Not to be confused with Papa (earth, as in Papatūānuku — the earth mother).",
+    "example_sentences": [
+      { "maori": "Ko Tama tōku pāpā.", "english": "Tama is my father." }
+    ],
+    "related_words": ["māmā", "koroua", "kuia", "whānau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "tamariki",
+    "maori": "tamariki",
+    "english": ["children", "kids"],
+    "pronunciation": "tah-mah-ree-kee",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["whanau", "common"],
+    "definition": "Children (plural). Singular is tamāhine (girl/daughter) or tama (boy/son). Tamariki are cherished in Māori society as the future of the iwi.",
+    "example_sentences": [
+      { "maori": "Ko ngā tamariki te iho o tō tātou ao.", "english": "Children are the essence of our world." }
+    ],
+    "related_words": ["tama", "tamāhine", "mokopuna", "whānau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "kuia",
+    "maori": "kuia",
+    "english": ["elderly woman", "grandmother", "female elder"],
+    "pronunciation": "koo-ee-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["whanau"],
+    "definition": "An elderly woman or female elder. Kuia hold a place of great respect in Māori communities as keepers of knowledge, tradition, and waiata.",
+    "example_sentences": [
+      { "maori": "Ka kōrero te kuia ki ngā tamariki.", "english": "The elderly woman spoke to the children." }
+    ],
+    "related_words": ["koroua", "kaumātua", "tīpuna", "whānau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "koroua",
+    "maori": "koroua",
+    "english": ["elderly man", "grandfather", "male elder"],
+    "pronunciation": "koh-roh-oo-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["whanau"],
+    "definition": "An elderly man or male elder. Koroua are respected for their wisdom and knowledge of tradition and tikanga.",
+    "example_sentences": [
+      { "maori": "He mōhio nui tōku koroua.", "english": "My grandfather is very knowledgeable." }
+    ],
+    "related_words": ["kuia", "kaumātua", "tīpuna", "whānau"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "whenua",
+    "maori": "whenua",
+    "english": ["land", "earth", "placenta", "afterbirth"],
+    "pronunciation": "feh-noo-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature", "values"],
+    "definition": "Land or earth; also the placenta. The connection between whenua (land) and whenua (placenta) represents the deep bond between people and their land — both nurture life.",
+    "example_sentences": [
+      { "maori": "E hoki ana au ki tōku whenua.", "english": "I am returning to my land." }
+    ],
+    "related_words": ["tūrangawaewae", "maunga", "awa", "papatūānuku"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "rangi",
+    "maori": "rangi",
+    "english": ["sky", "heaven", "day"],
+    "pronunciation": "rung-ee",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature"],
+    "definition": "The sky or heavens. Ranginui (the sky father) is one of the principal atua (gods) in Māori cosmology. Also means 'day' as in 'he aha tēnei rangi?' (what day is this?).",
+    "example_sentences": [
+      { "maori": "Ka nui ngā whetū o te rangi.", "english": "The stars of the sky are many." }
+    ],
+    "related_words": ["rā", "marama", "whetū", "papatūānuku"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "ra",
+    "maori": "rā",
+    "english": ["sun", "day", "sail"],
+    "pronunciation": "rah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature"],
+    "definition": "The sun; also 'day'. The rā is the source of warmth and light, and features prominently in karakia (prayer) and waiata (song).",
+    "example_sentences": [
+      { "maori": "Ka ura te rā i tēnei ata.", "english": "The sun glows this morning." }
+    ],
+    "related_words": ["rangi", "marama", "ātea"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "marama",
+    "maori": "marama",
+    "english": ["moon", "month", "to understand", "clear"],
+    "pronunciation": "mah-rah-mah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature"],
+    "definition": "The moon; a month (measured by the lunar cycle); also means to understand or to be clear. The Māori lunar calendar (maramataka) was used to guide planting, fishing, and other activities.",
+    "example_sections": [],
+    "example_sentences": [
+      { "maori": "Ka mārama ana ahau.", "english": "Now I understand." },
+      { "maori": "He ātaahua te marama i tēnei pō.", "english": "The moon is beautiful tonight." }
+    ],
+    "related_words": ["rā", "rangi", "whetū", "maramataka"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "wai",
+    "maori": "wai",
+    "english": ["water", "who"],
+    "pronunciation": "why",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature", "common"],
+    "definition": "Water; also the question word 'who' (ko wai? — who is it?). Wai is precious and sacred in Māori culture.",
+    "example_sentences": [
+      { "maori": "Homai he wai māku.", "english": "Give me some water." },
+      { "maori": "Ko wai tō ingoa?", "english": "What is your name?" }
+    ],
+    "related_words": ["awa", "moana", "roto", "ua"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "mana",
+    "maori": "mana",
+    "english": ["prestige", "authority", "power", "status", "influence"],
+    "pronunciation": "mah-nah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "common"],
+    "definition": "Prestige, authority, and spiritual power. Mana can be inherited (mana tūpuna), earned (mana tangata), or given (mana tūāhu). Protecting and enhancing the mana of others is central to Māori social interaction.",
+    "example_sentences": [
+      { "maori": "Me tiaki i te mana o ōu tīpuna.", "english": "Protect the mana of your ancestors." }
+    ],
+    "related_words": ["manaaki", "manaakitanga", "tapu", "noa"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "tapu",
+    "maori": "tapu",
+    "english": ["sacred", "forbidden", "restricted", "holy"],
+    "pronunciation": "tah-poo",
+    "audio": null,
+    "part_of_speech": "adjective",
+    "categories": ["values"],
+    "definition": "Sacred, under spiritual restriction, or forbidden. Tapu protects people, places, and objects that are spiritually significant. The word 'taboo' in English is derived from tapu.",
+    "example_sentences": [
+      { "maori": "He tapu tēnei wāhi.", "english": "This place is sacred/restricted." }
+    ],
+    "related_words": ["noa", "mana", "karakia", "wāhi tapu"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "noa",
+    "maori": "noa",
+    "english": ["free from restriction", "ordinary", "common", "safe"],
+    "pronunciation": "noh-ah",
+    "audio": null,
+    "part_of_speech": "adjective",
+    "categories": ["values"],
+    "definition": "Free from tapu or restriction; ordinary, safe, and accessible. Noa is the complement of tapu — together they govern the spiritual status of people, places, and things.",
+    "example_sentences": [
+      { "maori": "Kua noa tēnei wāhi.", "english": "This place is now free from restriction." }
+    ],
+    "related_words": ["tapu", "mana", "karakia"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "karakia",
+    "maori": "karakia",
+    "english": ["prayer", "incantation", "blessing", "to recite a prayer"],
+    "pronunciation": "kah-rah-kee-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "common"],
+    "definition": "A prayer, incantation, or ritual chant. Karakia are used to open and close meetings, before meals, and at the start of any significant activity to invite spiritual protection and remove tapu.",
+    "example_sentences": [
+      { "maori": "Me karakia tātou i mua i te kai.", "english": "Let us say a prayer before we eat." }
+    ],
+    "related_words": ["tapu", "noa", "waiata", "mihimihi"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "iwi",
+    "maori": "iwi",
+    "english": ["tribe", "people", "nation", "bones"],
+    "pronunciation": "ee-wee",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "whanau"],
+    "definition": "A tribe or large social grouping descended from a common ancestor. Iwi are made up of hapū (sub-tribes), which are made up of whānau (family groups). Also means 'bones'.",
+    "example_sentences": [
+      { "maori": "Ko Ngāpuhi tōku iwi.", "english": "Ngāpuhi is my tribe." }
+    ],
+    "related_words": ["hapū", "whānau", "whakapapa", "tīpuna"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "hapu",
+    "maori": "hapū",
+    "english": ["sub-tribe", "clan", "pregnant"],
+    "pronunciation": "hah-poo",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "whanau"],
+    "definition": "A sub-tribe or clan within an iwi. The hapū was the primary political and military unit in traditional Māori society. Also means pregnant.",
+    "example_sentences": [
+      { "maori": "Ko Ngāti Raukawa tōku hapū.", "english": "Ngāti Raukawa is my sub-tribe." }
+    ],
+    "related_words": ["iwi", "whānau", "whakapapa"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "reo",
+    "maori": "reo",
+    "english": ["language", "voice", "dialect"],
+    "pronunciation": "reh-oh",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "kura", "common"],
+    "definition": "Language, voice, or dialect. Te Reo Māori (the Māori language) is a taonga tuku iho — a treasure passed down through generations. It is an official language of Aotearoa New Zealand.",
+    "example_sentences": [
+      { "maori": "Ko te reo Māori tōku reo.", "english": "Te Reo Māori is my language." },
+      { "maori": "Kōrerotia te reo!", "english": "Speak the language!" }
+    ],
+    "related_words": ["kōrero", "waiata", "pūrākau", "kura"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "aotearoa",
+    "maori": "Aotearoa",
+    "english": ["New Zealand", "Land of the Long White Cloud"],
+    "pronunciation": "ah-oh-teh-ah-roh-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["nature", "common"],
+    "definition": "The Māori name for New Zealand, traditionally translated as 'Land of the Long White Cloud'. Named by the legendary navigator Kupe's wife Kuramārōtini when she first sighted the land.",
+    "example_sentences": [
+      { "maori": "He ataahua tō tātou whenua o Aotearoa.", "english": "Our land of Aotearoa is beautiful." }
+    ],
+    "related_words": ["whenua", "moana", "maunga"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "ataahua",
+    "maori": "ātaahua",
+    "english": ["beautiful", "pretty", "attractive"],
+    "pronunciation": "ah-tah-ah-hoo-ah",
+    "audio": null,
+    "part_of_speech": "adjective",
+    "categories": ["common", "emotions"],
+    "definition": "Beautiful, pretty, or attractive. Can describe people, places, objects, or sounds.",
+    "example_sentences": [
+      { "maori": "He ātaahua tō āhua.", "english": "Your appearance is beautiful." }
+    ],
+    "related_words": ["pai", "reka", "tino"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "kura",
+    "maori": "kura",
+    "english": ["school", "precious", "treasure", "red"],
+    "pronunciation": "koo-rah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["kura", "common"],
+    "definition": "School or place of learning. Also means precious or treasured. Kura kaupapa Māori are schools that teach entirely in te reo Māori.",
+    "example_sentences": [
+      { "maori": "Ka haere ngā tamariki ki te kura.", "english": "The children go to school." }
+    ],
+    "related_words": ["akomanga", "kaiako", "ākonga", "mātauranga"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "matauranga",
+    "maori": "mātauranga",
+    "english": ["knowledge", "education", "wisdom", "understanding"],
+    "pronunciation": "mah-toh-rung-ah",
+    "audio": null,
+    "part_of_speech": "noun",
+    "categories": ["values", "kura"],
+    "definition": "Knowledge, education, and wisdom. Mātauranga Māori refers specifically to the body of Māori knowledge — including science, philosophy, history, and cultural practice — developed over centuries.",
+    "example_sentences": [
+      { "maori": "He taonga nui te mātauranga.", "english": "Knowledge is a great treasure." }
+    ],
+    "related_words": ["kura", "kaiako", "ākonga", "mōhio"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "haere-mai",
+    "maori": "haere mai",
+    "english": ["welcome", "come here", "come"],
+    "pronunciation": "hah-eh-reh my",
+    "audio": null,
+    "part_of_speech": "phrase",
+    "categories": ["common"],
+    "definition": "Welcome! Come here! A call of greeting and invitation. Often repeated three times in a formal welcome: 'Haere mai, haere mai, haere mai!'",
+    "example_sentences": [
+      { "maori": "Haere mai, haere mai, haere mai ki tō mātou marae.", "english": "Welcome, welcome, welcome to our marae." }
+    ],
+    "related_words": ["kia ora", "nau mai", "tēnā koe"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "nau-mai",
+    "maori": "nau mai",
+    "english": ["welcome", "come"],
+    "pronunciation": "noh my",
+    "audio": null,
+    "part_of_speech": "phrase",
+    "categories": ["common"],
+    "definition": "Welcome. Often paired with 'haere mai' as 'nau mai, haere mai' — a combined welcome greeting.",
+    "example_sentences": [
+      { "maori": "Nau mai, haere mai ki Aotearoa.", "english": "Welcome to Aotearoa." }
+    ],
+    "related_words": ["haere mai", "kia ora", "tēnā koe"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "e-hoa",
+    "maori": "e hoa",
+    "english": ["friend", "mate", "hey friend"],
+    "pronunciation": "eh hoh-ah",
+    "audio": null,
+    "part_of_speech": "phrase",
+    "categories": ["common", "whanau"],
+    "definition": "A term of address meaning 'friend' or 'mate'. Very commonly used in everyday speech. Hoa alone also means friend.",
+    "example_sentences": [
+      { "maori": "Kei te pēhea koe, e hoa?", "english": "How are you, friend?" }
+    ],
+    "related_words": ["hoa", "kia ora", "tēnā koe"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  },
+  {
+    "id": "morena",
+    "maori": "mōrena",
+    "english": ["good morning", "morning"],
+    "pronunciation": "moh-reh-nah",
+    "audio": null,
+    "part_of_speech": "phrase",
+    "categories": ["common"],
+    "definition": "Good morning. A commonly used greeting in the morning, used across Aotearoa regardless of te reo fluency.",
+    "example_sentences": [
+      { "maori": "Mōrena! He pai tō moe?", "english": "Good morning! Did you sleep well?" }
+    ],
+    "related_words": ["kia ora", "ata", "tēnā koe"],
+    "source": "Te Aka",
+    "verified": false,
+    "submitted_by": null,
+    "date_added": "2024-01-01"
+  }
+]
