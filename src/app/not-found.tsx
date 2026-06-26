@@ -3,12 +3,21 @@ import SearchBar from '@/components/SearchBar'
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-xl px-4 sm:px-6 py-20 text-center">
-      <h1 className="font-display text-5xl font-bold text-forest-800 dark:text-forest-200 mb-2">
+    <div className="mx-auto max-w-xl px-4 sm:px-6 py-24 text-center">
+      <p className="text-sm font-semibold uppercase tracking-widest mb-3"
+        style={{ color: 'var(--terracotta)' }}>
+        404
+      </p>
+      <h1 className="font-display text-5xl sm:text-6xl font-bold mb-2 maori-word"
+        style={{ color: 'var(--accent)' }}>
         Kāore i kitea
       </h1>
-      <p className="text-earth-500 dark:text-earth-400 italic mb-6">Not found</p>
-      <p className="text-[var(--foreground)] mb-8">
+      <p className="text-base italic mb-6"
+        style={{ color: 'var(--text-secondary)' }}>
+        Not found
+      </p>
+      <p className="mb-10 leading-relaxed"
+        style={{ color: 'var(--foreground)' }}>
         The page you were looking for does not exist. Try searching for a word below.
       </p>
       <SearchBar placeholder="Search te reo Māori…" />
