@@ -4,21 +4,27 @@
 
 @layer base {
   :root {
-    --background: theme('colors.cream.100');
-    --foreground: theme('colors.forest.950');
-    --card: theme('colors.cream.50');
-    --border: theme('colors.earth.200');
-    --muted: theme('colors.earth.100');
-    --accent: theme('colors.forest.600');
+    --background: #F5F0E8;
+    --foreground: #1A1A1A;
+    --card: #FDFAF5;
+    --border: #E8E2D6;
+    --muted: #EDE8DF;
+    --accent: #1C3D2E;
+    --terracotta: #C4763A;
+    --terracotta-light: #F5E9DB;
+    --text-secondary: #6B6B5F;
   }
 
   .dark {
-    --background: theme('colors.forest.950');
-    --foreground: theme('colors.cream.100');
-    --card: theme('colors.forest.900');
-    --border: theme('colors.forest.800');
-    --muted: theme('colors.forest.900');
-    --accent: theme('colors.forest.400');
+    --background: #0F2318;
+    --foreground: #F5F0E8;
+    --card: #162B1F;
+    --border: #1E3A2A;
+    --muted: #122319;
+    --accent: #5A9768;
+    --terracotta: #D4865A;
+    --terracotta-light: #1A2E22;
+    --text-secondary: #A09A8E;
   }
 
   html {
@@ -31,18 +37,20 @@
     @apply font-sans antialiased transition-colors duration-200;
   }
 
-  /* Macron-safe rendering — force ligature off for macron vowels */
+  /* Macron-safe rendering */
   .maori-word {
     font-feature-settings: "liga" 0;
     font-family: var(--font-lora), Georgia, serif;
   }
 
   ::selection {
-    @apply bg-forest-300 text-forest-950;
+    background: #ADCBB2;
+    color: #0F2318;
   }
 
   .dark ::selection {
-    @apply bg-forest-700 text-cream-100;
+    background: #1C3D2E;
+    color: #F5F0E8;
   }
 }
 
@@ -54,14 +62,16 @@
   }
 
   .btn-primary {
-    @apply bg-forest-600 text-cream-50 hover:bg-forest-700
-           dark:bg-forest-500 dark:hover:bg-forest-400 dark:text-forest-950
-           px-4 py-2 rounded-lg font-medium transition-colors duration-150
-           focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2;
+    background-color: var(--accent);
+    color: var(--background);
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-150
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-forest-500
+           hover:brightness-90 active:brightness-75;
   }
 
   .btn-ghost {
-    @apply text-forest-700 dark:text-forest-300 hover:bg-forest-100 dark:hover:bg-forest-800
+    color: var(--accent);
+    @apply hover:bg-forest-100 dark:hover:bg-forest-900
            px-3 py-1.5 rounded-lg transition-colors duration-150
            focus:outline-none focus:ring-2 focus:ring-forest-400;
   }
@@ -76,7 +86,20 @@
     color: var(--foreground);
     @apply rounded-lg px-4 py-2.5 w-full
            focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-forest-500
-           placeholder:text-earth-400 dark:placeholder:text-earth-600
+           placeholder:text-earth-400 dark:placeholder:text-earth-500
            transition-colors duration-150;
+  }
+
+  /* Chat bubble components */
+  .bubble-teacher {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    @apply rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed;
+  }
+
+  .bubble-student {
+    background-color: var(--accent);
+    color: var(--background);
+    @apply rounded-2xl rounded-tr-sm px-4 py-3 text-sm leading-relaxed font-display;
   }
 }

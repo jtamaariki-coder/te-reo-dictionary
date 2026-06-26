@@ -7,16 +7,16 @@ interface Props {
 
 export default function ExampleSentence({ sentence, index }: Props) {
   return (
-    <div className="rounded-lg border border-[var(--border)] bg-[var(--muted)] px-4 py-3">
+    <div className="rounded-xl border px-5 py-4" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>
       {index !== undefined && (
-        <p className="text-[10px] font-semibold uppercase tracking-widest text-earth-400 dark:text-earth-600 mb-1">
+        <p className="text-[9px] font-semibold uppercase tracking-widest mb-1.5" style={{ color: 'var(--text-secondary)', opacity: 0.6 }}>
           Example {index + 1}
         </p>
       )}
-      <p className="font-display font-semibold text-forest-800 dark:text-forest-200 leading-snug maori-word">
+      <p className="font-display font-semibold leading-snug maori-word text-base" style={{ color: 'var(--accent)' }}>
         {sentence.maori}
       </p>
-      <p className="mt-1 text-sm italic text-earth-600 dark:text-earth-400">
+      <p className="mt-1.5 text-sm italic" style={{ color: 'var(--text-secondary)' }}>
         {sentence.english}
       </p>
     </div>

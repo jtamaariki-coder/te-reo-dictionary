@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect, type ReactNode } from 'react'
 import type { WordEntry } from '@/types/dictionary'
 import Link from 'next/link'
 
@@ -13,7 +13,6 @@ interface Props {
 interface FillBlankEx {
   type: 'fill-blank'
   title: string
-  instruction: string
   sentence: { before: string; after: string; answer: string }
   english: string
 }
@@ -21,7 +20,6 @@ interface FillBlankEx {
 interface TenseMarkerEx {
   type: 'tense-marker'
   title: string
-  instruction: string
   sentence: string
   options: string[]
   answer: string
@@ -31,7 +29,6 @@ interface TenseMarkerEx {
 interface BuildSentenceEx {
   type: 'build-sentence'
   title: string
-  instruction: string
   tiles: string[]
   answer: string[]
   english: string
@@ -40,7 +37,6 @@ interface BuildSentenceEx {
 interface TypeSentenceEx {
   type: 'type-sentence'
   title: string
-  instruction: string
   english: string
   answer: string
 }
@@ -50,19 +46,16 @@ type ExerciseSet = [FillBlankEx, TenseMarkerEx, BuildSentenceEx, TypeSentenceEx]
 function getExercises(word: WordEntry): ExerciseSet {
   const m = word.maori
   const eng = word.english[0]
-
   return [
     {
       type: 'fill-blank',
       title: 'Fill in the blank',
-      instruction: 'Type the missing word to complete the sentence.',
       sentence: { before: 'He', after: 'tēnei.', answer: m },
       english: `This is ${eng}.`,
     },
     {
       type: 'tense-marker',
       title: 'Tap the correct tense marker',
-      instruction: 'Which tense marker makes this a present-tense sentence?',
       sentence: `___ pai tēnei ${m}.`,
       options: ['i', 'kei te', 'ka', 'e…ana'],
       answer: 'kei te',
@@ -71,7 +64,6 @@ function getExercises(word: WordEntry): ExerciseSet {
     {
       type: 'build-sentence',
       title: 'Build the sentence',
-      instruction: 'Tap the tiles in the correct order to build the Māori sentence.',
       tiles: ['He', m, 'tēnei.'],
       answer: ['He', m, 'tēnei.'],
       english: `This is ${eng}.`,
@@ -79,107 +71,109 @@ function getExercises(word: WordEntry): ExerciseSet {
     {
       type: 'type-sentence',
       title: 'Type the sentence',
-      instruction: 'Read the English below and type the Māori sentence.',
       english: `This is ${eng}.`,
       answer: `He ${m} tēnei.`,
     },
   ]
 }
 
-// ── Shared UI ─────────────────────────────────────────────────────────────────
+// ── Chat history ──────────────────────────────────────────────────────────────
+
+interface Exchange {
+  title: string
+  userAnswer: string
+  modelAnswer: string
+  correct: boolean
+}
+
+// ── Chat UI primitives ────────────────────────────────────────────────────────
+
+function TeacherAvatar() {
+  return (
+    <div className="w-7 h-7 rounded-full text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5 select-none"
+      style={{ background: 'var(--accent)', color: 'var(--background)' }}>
+      WA
+    </div>
+  )
+}
+
+function TeacherMsg({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex gap-2.5 items-start">
+      <TeacherAvatar />
+      <div className="bubble-teacher max-w-[85%]">{children}</div>
+    </div>
+  )
+}
+
+function StudentMsg({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex justify-end">
+      <div className="bubble-student max-w-[75%] maori-word">{children}</div>
+    </div>
+  )
+}
+
+function FeedbackMsg({ correct, model }: { correct: boolean; model: string }) {
+  return (
+    <TeacherMsg>
+      {correct ? (
+        <span style={{ color: 'var(--terracotta)' }}>Tika · spot on!</span>
+      ) : (
+        <span style={{ color: 'var(--text-secondary)' }}>
+          Try saying:{' '}
+          <span className="font-display maori-word font-semibold" style={{ color: 'var(--accent)' }}>{model}</span>
+        </span>
+      )}
+    </TeacherMsg>
+  )
+}
 
 function PlaceholderBadge() {
   return (
-    <div className="flex items-center gap-1.5 text-xs text-earth-500 dark:text-earth-500 mb-5">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <div className="flex items-center gap-1.5 text-xs mb-3" style={{ color: 'var(--text-secondary)', opacity: 0.6 }}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
       </svg>
-      Placeholder question — real content being prepared by te reo experts
+      Placeholder — real content being prepared by te reo experts
     </div>
   )
 }
 
 function ProgressBar({ current, total }: { current: number; total: number }) {
   return (
-    <div className="mb-6">
-      <div className="flex justify-between items-center mb-1.5 text-xs text-earth-500 dark:text-earth-500">
+    <div className="mb-5">
+      <div className="flex justify-between items-center mb-1.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
         <span>Exercise {current} of {total}</span>
         <span>{Math.round((current / total) * 100)}%</span>
       </div>
-      <div className="h-1.5 rounded-full bg-earth-100 dark:bg-forest-900 overflow-hidden">
-        <div
-          className="h-full rounded-full bg-forest-500 dark:bg-forest-400 transition-all duration-500"
-          style={{ width: `${(current / total) * 100}%` }}
-        />
+      <div className="h-1 rounded-full overflow-hidden" style={{ background: 'var(--muted)' }}>
+        <div className="h-full rounded-full transition-all duration-500"
+          style={{ width: `${(current / total) * 100}%`, background: 'var(--accent)' }} />
       </div>
-      <div className="flex gap-1.5 mt-2">
+      <div className="flex gap-1.5 mt-1.5">
         {Array.from({ length: total }).map((_, i) => (
-          <div
-            key={i}
-            className={`flex-1 h-0.5 rounded-full transition-colors duration-300 ${
-              i < current
-                ? 'bg-forest-500 dark:bg-forest-400'
-                : 'bg-earth-200 dark:bg-forest-900'
-            }`}
-          />
+          <div key={i} className="flex-1 h-0.5 rounded-full transition-colors duration-300"
+            style={{ background: i < current ? 'var(--accent)' : 'var(--border)' }} />
         ))}
       </div>
     </div>
   )
 }
 
-interface ShellProps {
-  title: string
-  children: React.ReactNode
-  onNext: () => void
-  onSkip: () => void
-  nextLabel?: string
-  canNext: boolean
-}
+// ── Exercises ─────────────────────────────────────────────────────────────────
 
-function ExerciseShell({ title, children, onNext, onSkip, nextLabel = 'Next →', canNext }: ShellProps) {
-  return (
-    <div>
-      <p className="text-[10px] font-semibold uppercase tracking-widest text-earth-400 dark:text-earth-600 mb-1">
-        {title}
-      </p>
-      <PlaceholderBadge />
-      {children}
-      <div className="flex items-center gap-3 mt-6">
-        <button
-          onClick={onNext}
-          disabled={!canNext}
-          className="btn-primary disabled:opacity-40 disabled:cursor-not-allowed text-sm"
-        >
-          {nextLabel}
-        </button>
-        <button onClick={onSkip} className="btn-ghost text-sm text-earth-500">
-          Skip
-        </button>
-      </div>
-    </div>
-  )
-}
-
-// ── Exercise 1 — Fill in the blank ────────────────────────────────────────────
-
-function FillBlank({ ex, onNext, onSkip }: { ex: FillBlankEx; onNext: () => void; onSkip: () => void }) {
+function FillBlank({ ex, onAdvance, onSkip }: { ex: FillBlankEx; onAdvance: (a: string, c: boolean, m: string) => void; onSkip: () => void }) {
   const [value, setValue] = useState('')
   const [revealed, setRevealed] = useState(false)
+  const isCorrect = value.trim().toLowerCase() === ex.sentence.answer.toLowerCase()
 
   return (
-    <ExerciseShell
-      title={ex.title}
-      onNext={onNext}
-      onSkip={onSkip}
-      nextLabel={revealed ? 'Next →' : 'Check'}
-      canNext={revealed || value.trim().length > 0}
-    >
-      <p className="text-sm text-earth-600 dark:text-earth-400 mb-4">{ex.instruction}</p>
-      <p className="text-xs italic text-earth-400 dark:text-earth-600 mb-3">{ex.english}</p>
-
-      <div className="flex items-baseline gap-2 flex-wrap text-lg font-display maori-word">
-        <span className="text-forest-800 dark:text-forest-200">{ex.sentence.before}</span>
+    <div>
+      <PlaceholderBadge />
+      <p className="text-xs italic mb-4" style={{ color: 'var(--text-secondary)' }}>{ex.english}</p>
+      <div className="flex items-baseline gap-2 flex-wrap text-lg font-display maori-word mb-4" style={{ color: 'var(--accent)' }}>
+        <span>{ex.sentence.before}</span>
         {!revealed ? (
           <input
             type="text"
@@ -188,95 +182,92 @@ function FillBlank({ ex, onNext, onSkip }: { ex: FillBlankEx; onNext: () => void
             onKeyDown={(e) => { if (e.key === 'Enter' && value.trim()) setRevealed(true) }}
             placeholder="___"
             aria-label="Fill in the missing word"
-            className="input-base font-display maori-word w-40 inline-block text-center py-1.5"
+            className="input-base font-display maori-word w-36 inline-block text-center py-1.5 text-base"
           />
         ) : (
-          <span className="px-3 py-1 rounded-lg bg-forest-100 dark:bg-forest-800 text-forest-700 dark:text-forest-300 font-bold">
+          <span className="px-3 py-1 rounded-lg font-bold" style={{ background: 'var(--accent)', color: 'var(--background)' }}>
             {ex.sentence.answer}
           </span>
         )}
-        <span className="text-forest-800 dark:text-forest-200">{ex.sentence.after}</span>
+        <span>{ex.sentence.after}</span>
       </div>
-
-      {!revealed && value.trim().length > 0 && (
-        <button onClick={() => setRevealed(true)} className="mt-4 btn-ghost text-sm">
-          Check answer
-        </button>
-      )}
       {revealed && (
-        <p className="mt-3 text-sm text-forest-600 dark:text-forest-400">
-          Ka pai! The answer is <span className="font-display font-bold maori-word">{ex.sentence.answer}</span>.
+        <p className="text-sm mb-4">
+          {isCorrect
+            ? <span style={{ color: 'var(--terracotta)' }}>Tika · spot on!</span>
+            : <span style={{ color: 'var(--text-secondary)' }}>The answer is <span className="font-display maori-word font-bold" style={{ color: 'var(--accent)' }}>{ex.sentence.answer}</span></span>
+          }
         </p>
       )}
-    </ExerciseShell>
+      <div className="flex items-center gap-3">
+        {!revealed
+          ? <button onClick={() => { if (value.trim()) setRevealed(true) }} disabled={!value.trim()} className="btn-primary text-sm disabled:opacity-40">Check</button>
+          : <button onClick={() => onAdvance(value || '—', isCorrect, ex.sentence.answer)} className="btn-primary text-sm">Next →</button>
+        }
+        <button onClick={onSkip} className="text-sm" style={{ color: 'var(--text-secondary)' }}>Skip</button>
+      </div>
+    </div>
   )
 }
 
-// ── Exercise 2 — Tap the tense marker ────────────────────────────────────────
-
-function TenseMarker({ ex, onNext, onSkip }: { ex: TenseMarkerEx; onNext: () => void; onSkip: () => void }) {
+function TenseMarker({ ex, onAdvance, onSkip }: { ex: TenseMarkerEx; onAdvance: (a: string, c: boolean, m: string) => void; onSkip: () => void }) {
   const [selected, setSelected] = useState<string | null>(null)
   const correct = selected === ex.answer
 
   return (
-    <ExerciseShell
-      title={ex.title}
-      onNext={onNext}
-      onSkip={onSkip}
-      canNext={selected !== null}
-    >
-      <p className="text-sm text-earth-600 dark:text-earth-400 mb-4">{ex.instruction}</p>
-      <p className="text-xs italic text-earth-400 dark:text-earth-600 mb-4">{ex.english}</p>
-
-      <div className="font-display maori-word text-lg text-forest-800 dark:text-forest-200 mb-5 p-4 rounded-xl bg-[var(--muted)] border border-[var(--border)]">
+    <div>
+      <PlaceholderBadge />
+      <p className="text-xs italic mb-4" style={{ color: 'var(--text-secondary)' }}>{ex.english}</p>
+      <div className="font-display maori-word text-base mb-5 p-4 rounded-xl"
+        style={{ background: 'var(--muted)', border: '1px solid var(--border)', color: 'var(--accent)' }}>
         {selected ? ex.sentence.replace('___', selected) : ex.sentence}
       </div>
-
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 mb-4">
         {ex.options.map((opt) => {
           const isCorrectOpt = selected !== null && opt === ex.answer
           const isWrong = selected === opt && !correct
-
           return (
             <button
               key={opt}
               onClick={() => { if (!selected) setSelected(opt) }}
               disabled={selected !== null}
-              className={`py-2.5 px-3 rounded-xl border text-sm font-medium font-display maori-word transition-colors ${
+              className="py-2.5 px-3 rounded-xl border text-sm font-medium font-display maori-word transition-colors"
+              style={
                 isCorrectOpt
-                  ? 'border-forest-400 bg-forest-100 dark:bg-forest-800 text-forest-700 dark:text-forest-300'
+                  ? { borderColor: 'var(--accent)', background: 'var(--accent)', color: 'var(--background)' }
                   : isWrong
-                  ? 'border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-950 text-red-600 dark:text-red-400'
+                  ? { borderColor: 'var(--terracotta)', background: 'var(--terracotta-light)', color: 'var(--terracotta)' }
                   : selected !== null
-                  ? 'border-[var(--border)] bg-[var(--muted)] opacity-50'
-                  : 'border-[var(--border)] bg-[var(--card)] hover:border-forest-300 dark:hover:border-forest-700 hover:bg-forest-50 dark:hover:bg-forest-900'
-              }`}
+                  ? { borderColor: 'var(--border)', background: 'var(--muted)', color: 'var(--text-secondary)', opacity: 0.4 }
+                  : { borderColor: 'var(--border)', background: 'var(--card)' }
+              }
             >
               {opt}
             </button>
           )
         })}
       </div>
-
       {selected && (
-        <p className={`mt-4 text-sm ${correct ? 'text-forest-600 dark:text-forest-400' : 'text-earth-600 dark:text-earth-400'}`}>
+        <p className="text-sm mb-4">
           {correct
-            ? `Ka pai! "${ex.answer}" marks present tense.`
-            : `The correct answer is "${ex.answer}" — it marks present tense.`}
+            ? <span style={{ color: 'var(--terracotta)' }}>Tika · spot on!</span>
+            : <span style={{ color: 'var(--text-secondary)' }}>Try saying: <span className="font-display maori-word font-bold" style={{ color: 'var(--accent)' }}>{ex.answer}</span></span>
+          }
         </p>
       )}
-    </ExerciseShell>
+      <div className="flex items-center gap-3">
+        <button onClick={() => selected && onAdvance(selected, correct, ex.answer)} disabled={!selected} className="btn-primary text-sm disabled:opacity-40">Next →</button>
+        <button onClick={onSkip} className="text-sm" style={{ color: 'var(--text-secondary)' }}>Skip</button>
+      </div>
+    </div>
   )
 }
 
-// ── Exercise 3 — Build sentence from tiles ────────────────────────────────────
-
-function BuildSentence({ ex, onNext, onSkip }: { ex: BuildSentenceEx; onNext: () => void; onSkip: () => void }) {
+function BuildSentence({ ex, onAdvance, onSkip }: { ex: BuildSentenceEx; onAdvance: (a: string, c: boolean, m: string) => void; onSkip: () => void }) {
   const shuffled = useMemo(() => [...ex.tiles].sort(() => Math.random() - 0.5), [ex.tiles])
   const [available, setAvailable] = useState<string[]>(shuffled)
   const [placed, setPlaced] = useState<string[]>([])
   const [revealed, setRevealed] = useState(false)
-
   const isCorrect = placed.join(' ') === ex.answer.join(' ')
 
   function tapAvailable(tile: string, idx: number) {
@@ -292,92 +283,77 @@ function BuildSentence({ ex, onNext, onSkip }: { ex: BuildSentenceEx; onNext: ()
   }
 
   return (
-    <ExerciseShell
-      title={ex.title}
-      onNext={onNext}
-      onSkip={onSkip}
-      nextLabel={revealed ? 'Next →' : 'Check'}
-      canNext={revealed || placed.length === ex.tiles.length}
-    >
-      <p className="text-sm text-earth-600 dark:text-earth-400 mb-4">{ex.instruction}</p>
-      <p className="text-xs italic text-earth-400 dark:text-earth-600 mb-5">{ex.english}</p>
-
-      {/* Answer area */}
+    <div>
+      <PlaceholderBadge />
+      <p className="text-xs italic mb-4" style={{ color: 'var(--text-secondary)' }}>{ex.english}</p>
       <div
         aria-label="Your answer"
-        className={`min-h-[52px] rounded-xl border-2 border-dashed p-3 mb-4 flex flex-wrap gap-2 transition-colors ${
-          revealed
-            ? isCorrect
-              ? 'border-forest-400 dark:border-forest-600 bg-forest-50 dark:bg-forest-950'
-              : 'border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-950'
-            : 'border-earth-200 dark:border-forest-800 bg-[var(--muted)]'
-        }`}
+        className="min-h-[52px] rounded-xl border-2 border-dashed p-3 mb-3 flex flex-wrap gap-2"
+        style={{
+          borderColor: revealed ? (isCorrect ? 'var(--accent)' : 'var(--terracotta)') : 'var(--border)',
+          background: 'var(--muted)',
+        }}
       >
         {placed.length === 0 && (
-          <span className="text-xs text-earth-300 dark:text-earth-700 italic self-center">
+          <span className="text-xs italic self-center" style={{ color: 'var(--text-secondary)', opacity: 0.5 }}>
             Tap tiles below to build the sentence…
           </span>
         )}
         {placed.map((tile, i) => (
           <button
-            key={`placed-${i}`}
+            key={`p-${i}`}
             onClick={() => tapPlaced(tile, i)}
             disabled={revealed}
-            className="px-3 py-1.5 rounded-lg bg-forest-100 dark:bg-forest-800 border border-forest-200 dark:border-forest-700 text-forest-800 dark:text-forest-200 text-sm font-display maori-word font-medium hover:bg-forest-200 dark:hover:bg-forest-700 transition-colors disabled:cursor-default"
+            className="px-3 py-1.5 rounded-lg border text-sm font-display maori-word font-medium transition-colors disabled:cursor-default"
+            style={{ background: 'var(--accent)', color: 'var(--background)', borderColor: 'var(--accent)' }}
           >
             {tile}
           </button>
         ))}
       </div>
-
-      {/* Tile pool */}
-      <div aria-label="Available tiles" className="flex flex-wrap gap-2 mb-2">
+      <div aria-label="Available tiles" className="flex flex-wrap gap-2 mb-4">
         {available.map((tile, i) => (
           <button
-            key={`avail-${i}`}
+            key={`a-${i}`}
             onClick={() => tapAvailable(tile, i)}
             disabled={revealed}
-            className="px-3 py-1.5 rounded-lg bg-[var(--card)] border border-[var(--border)] text-sm font-display maori-word font-medium hover:border-forest-300 dark:hover:border-forest-700 hover:bg-forest-50 dark:hover:bg-forest-900 transition-colors disabled:opacity-40 disabled:cursor-default"
+            className="px-3 py-1.5 rounded-lg border text-sm font-display maori-word font-medium transition-colors disabled:opacity-40 disabled:cursor-default"
+            style={{ background: 'var(--card)', borderColor: 'var(--border)' }}
           >
             {tile}
           </button>
         ))}
       </div>
-
-      {!revealed && placed.length === ex.tiles.length && (
-        <button onClick={() => setRevealed(true)} className="mt-3 btn-ghost text-sm">
-          Check answer
-        </button>
-      )}
       {revealed && (
-        <p className={`mt-3 text-sm ${isCorrect ? 'text-forest-600 dark:text-forest-400' : 'text-earth-600 dark:text-earth-400'}`}>
-          {isCorrect ? "Ka pai! That's the correct order." : `Correct: ${ex.answer.join(' ')}`}
+        <p className="text-sm mb-4">
+          {isCorrect
+            ? <span style={{ color: 'var(--terracotta)' }}>Tika · spot on!</span>
+            : <span style={{ color: 'var(--text-secondary)' }}>Correct order: <span className="font-display maori-word font-bold" style={{ color: 'var(--accent)' }}>{ex.answer.join(' ')}</span></span>
+          }
         </p>
       )}
-    </ExerciseShell>
+      <div className="flex items-center gap-3">
+        {!revealed
+          ? <button onClick={() => { if (placed.length === ex.tiles.length) setRevealed(true) }} disabled={placed.length !== ex.tiles.length} className="btn-primary text-sm disabled:opacity-40">Check</button>
+          : <button onClick={() => onAdvance(placed.join(' '), isCorrect, ex.answer.join(' '))} className="btn-primary text-sm">Next →</button>
+        }
+        <button onClick={onSkip} className="text-sm" style={{ color: 'var(--text-secondary)' }}>Skip</button>
+      </div>
+    </div>
   )
 }
 
-// ── Exercise 4 — Type the sentence ───────────────────────────────────────────
-
-function TypeSentence({ ex, onNext, onSkip, isLast }: { ex: TypeSentenceEx; onNext: () => void; onSkip: () => void; isLast: boolean }) {
+function TypeSentence({ ex, onAdvance, onSkip, isLast }: { ex: TypeSentenceEx; onAdvance: (a: string, c: boolean, m: string) => void; onSkip: () => void; isLast: boolean }) {
   const [value, setValue] = useState('')
   const [revealed, setRevealed] = useState(false)
 
   return (
-    <ExerciseShell
-      title={ex.title}
-      onNext={onNext}
-      onSkip={onSkip}
-      nextLabel={revealed ? (isLast ? 'Finish →' : 'Next →') : 'Check'}
-      canNext={revealed || value.trim().length > 0}
-    >
-      <p className="text-sm text-earth-600 dark:text-earth-400 mb-4">{ex.instruction}</p>
-
-      <div className="rounded-xl bg-[var(--muted)] border border-[var(--border)] px-4 py-3 mb-4 text-center">
-        <p className="text-lg font-medium text-[var(--foreground)]">{ex.english}</p>
+    <div>
+      <PlaceholderBadge />
+      <div className="rounded-xl px-4 py-3 mb-4 text-center"
+        style={{ background: 'var(--muted)', border: '1px solid var(--border)' }}>
+        <p className="text-lg font-medium" style={{ color: 'var(--foreground)' }}>{ex.english}</p>
       </div>
-
       {!revealed ? (
         <textarea
           value={value}
@@ -385,25 +361,28 @@ function TypeSentence({ ex, onNext, onSkip, isLast }: { ex: TypeSentenceEx; onNe
           rows={2}
           placeholder="Type the Māori sentence here…"
           aria-label="Type the Māori sentence"
-          className="input-base font-display maori-word resize-none"
+          className="input-base font-display maori-word resize-none mb-4"
         />
       ) : (
-        <div className="rounded-xl border border-forest-200 dark:border-forest-800 bg-forest-50 dark:bg-forest-950 px-4 py-3 font-display maori-word text-forest-700 dark:text-forest-300">
+        <div className="rounded-xl border px-4 py-3 font-display maori-word mb-4"
+          style={{ background: 'var(--card)', borderColor: 'var(--accent)', color: 'var(--accent)' }}>
           {ex.answer}
         </div>
       )}
-
-      {!revealed && value.trim().length > 0 && (
-        <button onClick={() => setRevealed(true)} className="mt-3 btn-ghost text-sm">
-          Check answer
-        </button>
-      )}
       {revealed && (
-        <p className="mt-3 text-sm text-earth-600 dark:text-earth-400">
-          Ka pai for trying! The model sentence is shown above.
+        <p className="text-sm mb-4">
+          <span style={{ color: 'var(--terracotta)' }}>Try saying: </span>
+          <span className="font-display maori-word font-semibold" style={{ color: 'var(--accent)' }}>{ex.answer}</span>
         </p>
       )}
-    </ExerciseShell>
+      <div className="flex items-center gap-3">
+        {!revealed
+          ? <button onClick={() => { if (value.trim()) setRevealed(true) }} disabled={!value.trim()} className="btn-primary text-sm disabled:opacity-40">Check</button>
+          : <button onClick={() => onAdvance(value || '—', false, ex.answer)} className="btn-primary text-sm">{isLast ? 'Finish →' : 'Next →'}</button>
+        }
+        <button onClick={onSkip} className="text-sm" style={{ color: 'var(--text-secondary)' }}>Skip</button>
+      </div>
+    </div>
   )
 }
 
@@ -412,19 +391,19 @@ function TypeSentence({ ex, onNext, onSkip, isLast }: { ex: TypeSentenceEx; onNe
 function IntroScreen({ word, onStart }: { word: WordEntry; onStart: () => void }) {
   return (
     <div className="card p-6 text-center">
-      <p className="text-xs font-semibold uppercase tracking-widest text-forest-500 dark:text-forest-500 mb-3">
+      <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--terracotta)' }}>
         4 exercises
       </p>
-      <p className="text-[var(--foreground)] mb-2 leading-relaxed text-sm">
+      <p className="text-sm mb-2 leading-relaxed" style={{ color: 'var(--foreground)' }}>
         Practice using{' '}
-        <span className="font-display font-bold maori-word text-forest-800 dark:text-forest-200">{word.maori}</span>{' '}
+        <span className="font-display font-bold maori-word" style={{ color: 'var(--accent)' }}>{word.maori}</span>{' '}
         in context — fill in blanks, choose tense markers, build sentences, and more.
       </p>
-      <p className="text-xs text-earth-400 dark:text-earth-600 mb-5">
+      <p className="text-xs mb-5" style={{ color: 'var(--text-secondary)', opacity: 0.6 }}>
         Exercises use placeholder content — real questions are being prepared by te reo experts.
       </p>
       <button onClick={onStart} className="btn-primary">
-        Start practice →
+        Tīmata — Start →
       </button>
     </div>
   )
@@ -432,17 +411,18 @@ function IntroScreen({ word, onStart }: { word: WordEntry; onStart: () => void }
 
 function CompletionScreen({ word }: { word: WordEntry }) {
   return (
-    <div className="text-center py-6">
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-forest-100 dark:bg-forest-800 mb-5">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-forest-600 dark:text-forest-300">
+    <div className="text-center py-8">
+      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-5"
+        style={{ background: 'var(--accent)' }}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--background)' }}>
           <polyline points="20 6 9 17 4 12" />
         </svg>
       </div>
-      <h2 className="font-display text-3xl font-bold text-forest-800 dark:text-forest-200 mb-1">Ka pai!</h2>
-      <p className="text-earth-500 dark:text-earth-400 italic mb-4">Well done</p>
-      <p className="text-sm text-[var(--foreground)] mb-6 max-w-xs mx-auto leading-relaxed">
+      <h2 className="font-display text-4xl font-bold mb-1" style={{ color: 'var(--accent)' }}>Ka pai!</h2>
+      <p className="text-sm italic mb-4" style={{ color: 'var(--terracotta)' }}>Well done</p>
+      <p className="text-sm mb-6 max-w-xs mx-auto leading-relaxed" style={{ color: 'var(--foreground)' }}>
         You completed all 4 exercises for{' '}
-        <span className="font-display font-semibold maori-word text-forest-700 dark:text-forest-300">{word.maori}</span>.
+        <span className="font-display font-semibold maori-word" style={{ color: 'var(--accent)' }}>{word.maori}</span>.
         Keep practising to strengthen your reo!
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -462,8 +442,17 @@ function CompletionScreen({ word }: { word: WordEntry }) {
 export default function PracticeSection({ word }: Props) {
   const exercises = useMemo(() => getExercises(word), [word])
   const [phase, setPhase] = useState<'intro' | number | 'done'>('intro')
+  const [history, setHistory] = useState<Exchange[]>([])
+  const historyEndRef = useRef<HTMLDivElement>(null)
 
-  function advance() {
+  useEffect(() => {
+    historyEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  }, [history])
+
+  function advance(answer: string, correct: boolean, model: string) {
+    if (typeof phase === 'number') {
+      setHistory((h) => [...h, { title: exercises[phase].title, userAnswer: answer, modelAnswer: model, correct }])
+    }
     if (phase === 'intro') { setPhase(0); return }
     if (typeof phase === 'number') {
       const next = phase + 1
@@ -471,7 +460,15 @@ export default function PracticeSection({ word }: Props) {
     }
   }
 
-  if (phase === 'intro') return <IntroScreen word={word} onStart={advance} />
+  function skip() {
+    if (phase === 'intro') { setPhase(0); return }
+    if (typeof phase === 'number') {
+      const next = phase + 1
+      setPhase(next >= exercises.length ? 'done' : next)
+    }
+  }
+
+  if (phase === 'intro') return <IntroScreen word={word} onStart={() => setPhase(0)} />
   if (phase === 'done') return <CompletionScreen word={word} />
 
   const idx = phase as number
@@ -479,11 +476,59 @@ export default function PracticeSection({ word }: Props) {
   return (
     <div>
       <ProgressBar current={idx + 1} total={exercises.length} />
-      <div className="card p-5 sm:p-6">
-        {idx === 0 && <FillBlank ex={exercises[0]} onNext={advance} onSkip={advance} />}
-        {idx === 1 && <TenseMarker ex={exercises[1]} onNext={advance} onSkip={advance} />}
-        {idx === 2 && <BuildSentence ex={exercises[2]} onNext={advance} onSkip={advance} />}
-        {idx === 3 && <TypeSentence ex={exercises[3]} onNext={advance} onSkip={advance} isLast />}
+
+      {/* Chat history */}
+      {history.length > 0 && (
+        <div className="space-y-3 mb-5">
+          {history.map((ex, i) => (
+            <div key={i} className="space-y-2">
+              <TeacherMsg>
+                <span className="text-[9px] font-semibold uppercase tracking-widest block mb-1" style={{ color: 'var(--terracotta)' }}>
+                  {ex.title}
+                </span>
+                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
+                  Completed
+                </span>
+              </TeacherMsg>
+              <StudentMsg>{ex.userAnswer}</StudentMsg>
+              <FeedbackMsg correct={ex.correct} model={ex.modelAnswer} />
+            </div>
+          ))}
+          <div ref={historyEndRef} />
+        </div>
+      )}
+
+      {/* Divider between history and active exercise */}
+      {history.length > 0 && (
+        <div className="flex items-center gap-3 mb-5">
+          <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
+          <span className="text-[10px] uppercase tracking-widest" style={{ color: 'var(--text-secondary)', opacity: 0.5 }}>
+            Exercise {idx + 1}
+          </span>
+          <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
+        </div>
+      )}
+
+      {/* Active exercise — chat bubble wrapper */}
+      <div className="space-y-3">
+        <TeacherMsg>
+          <span className="text-[9px] font-semibold uppercase tracking-widest block mb-1" style={{ color: 'var(--terracotta)' }}>
+            {exercises[idx].title}
+          </span>
+          <span className="text-sm">
+            {idx === 0 && 'Type the missing word to complete the sentence.'}
+            {idx === 1 && 'Which tense marker makes this a present-tense sentence?'}
+            {idx === 2 && 'Tap the tiles in the correct order to build the Māori sentence.'}
+            {idx === 3 && 'Read the English below and type the Māori sentence.'}
+          </span>
+        </TeacherMsg>
+
+        <div className="card p-5 sm:p-6">
+          {idx === 0 && <FillBlank ex={exercises[0]} onAdvance={advance} onSkip={skip} />}
+          {idx === 1 && <TenseMarker ex={exercises[1]} onAdvance={advance} onSkip={skip} />}
+          {idx === 2 && <BuildSentence ex={exercises[2]} onAdvance={advance} onSkip={skip} />}
+          {idx === 3 && <TypeSentence ex={exercises[3]} onAdvance={advance} onSkip={skip} isLast />}
+        </div>
       </div>
     </div>
   )

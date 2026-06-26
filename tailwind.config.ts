@@ -10,44 +10,71 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Forest greens
+        // Primary green — deep forest, desaturated
         forest: {
-          50:  '#f0f7f0',
-          100: '#dceddc',
-          200: '#bbdcbb',
-          300: '#8fc38f',
-          400: '#5fa45f',
-          500: '#3d883d',
-          600: '#2d6b2d',
-          700: '#245424',
-          800: '#1e431e',
-          900: '#193819',
-          950: '#0c1f0c',
+          50:  '#EBF2EC',
+          100: '#D6E5D8',
+          200: '#ADCBB2',
+          300: '#83B18B',
+          400: '#5A9768',
+          500: '#3A7A48',
+          600: '#1C3D2E',
+          700: '#163028',
+          800: '#102322',
+          900: '#0A1619',
+          950: '#0F2318',
         },
-        // Earth tones
-        earth: {
-          50:  '#faf6f1',
-          100: '#f2e9de',
-          200: '#e4d0bb',
-          300: '#d3b190',
-          400: '#bf8f65',
-          500: '#b07447',
-          600: '#9a5f3b',
-          700: '#7f4b31',
-          800: '#683e2c',
-          900: '#573428',
-          950: '#2f1a13',
+        // Pine — alias for primary accent, same values as forest
+        pine: {
+          50:  '#EBF2EC',
+          100: '#D6E5D8',
+          200: '#ADCBB2',
+          300: '#83B18B',
+          400: '#5A9768',
+          500: '#3A7A48',
+          600: '#1C3D2E',
+          700: '#163028',
+          800: '#102322',
+          900: '#0A1619',
+          950: '#0F2318',
         },
-        // Warm off-white
+        // Terracotta / amber — secondary accent
+        terracotta: {
+          50:  '#FDF4EC',
+          100: '#FAEADB',
+          200: '#F5D5B7',
+          300: '#EFBF93',
+          400: '#DAAA6F',
+          500: '#C4763A',
+          600: '#A5622F',
+          700: '#864E25',
+          800: '#673A1B',
+          900: '#482611',
+        },
+        // Warm cream — backgrounds and surfaces
         cream: {
-          50:  '#fdfcf8',
-          100: '#faf7f0',
-          200: '#f4eddb',
-          300: '#ecdfc0',
-          400: '#e2cc9a',
-          500: '#d6b872',
+          50:  '#FDFAF5',
+          100: '#F5F0E8',
+          200: '#EDE8DF',
+          300: '#E8E2D6',
+          400: '#D5CFC3',
+          500: '#B8B2A6',
         },
-        // Ocean blue-green (moana)
+        // Warm stone — text secondary and borders
+        earth: {
+          50:  '#FDFAF5',
+          100: '#EDE8DF',
+          200: '#E8E2D6',
+          300: '#D5CFC3',
+          400: '#A8A29A',
+          500: '#6B6B5F',
+          600: '#52524A',
+          700: '#3D3D37',
+          800: '#28281F',
+          900: '#1A1A14',
+          950: '#0D0D0A',
+        },
+        // Ocean blue-green (moana) — kept for structure tab colour coding
         moana: {
           50:  '#f0f9fa',
           100: '#d9f0f3',
@@ -65,13 +92,6 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-lora)', 'Georgia', 'serif'],
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: '65ch',
-          },
-        },
       },
     },
   },
