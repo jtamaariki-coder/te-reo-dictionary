@@ -61,6 +61,20 @@ export default function WordDetail({ word }: Props) {
         </p>
       </section>
 
+      {/* Ako — Learn link */}
+      <div className="mb-6 -mt-2">
+        <Link
+          href={`/word/${word.id}/learn`}
+          className="inline-flex items-center gap-2 rounded-lg border border-forest-200 dark:border-forest-800 bg-forest-50 dark:bg-forest-950 px-3.5 py-2 text-sm text-forest-600 dark:text-forest-400 hover:border-forest-400 dark:hover:border-forest-600 hover:text-forest-700 dark:hover:text-forest-300 transition-colors group"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+          </svg>
+          <span>Ako — Learn this word in context</span>
+          <span className="ml-auto text-forest-400 dark:text-forest-600 group-hover:translate-x-0.5 transition-transform">→</span>
+        </Link>
+      </div>
+
       {/* Examples */}
       {word.example_sentences.length > 0 && (
         <section className="mb-6">
