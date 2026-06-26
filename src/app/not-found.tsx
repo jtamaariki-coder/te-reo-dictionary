@@ -5,7 +5,14 @@ export default function NotFound() {
     <main className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
       <p style={{ color: 'var(--terracotta)' }} className="text-sm font-medium tracking-widest uppercase mb-4">404</p>
       <h1 className="text-4xl mb-4" style={{ fontFamily: 'Georgia, serif' }}>Kāore i kitea</h1>
-      <p className="mb-8" style={{ color: 'var(--text-secondary)' }}>The page you were looking for does not exist.</p>
+      <p className="mb-8">
+        <span className="block maori-word text-lg font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)' }}>
+          Aroha mai, kei te hanga tonu
+        </span>
+        <span className="block text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>
+          Bear with us, still being built
+        </span>
+      </p>
       <div className="flex gap-4">
         <Link href="/" className="btn-ghost">← Home</Link>
         <Link href="/browse" className="btn-ghost">Browse all words</Link>

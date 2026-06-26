@@ -131,11 +131,13 @@ function FeedbackMsg({ correct, model }: { correct: boolean; model: string }) {
 
 function PlaceholderBadge() {
   return (
-    <div className="flex items-center gap-1.5 text-xs mb-3" style={{ color: 'var(--text-secondary)', opacity: 0.6 }}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
-      </svg>
-      Placeholder — real content being prepared by te reo experts
+    <div className="mb-3">
+      <span className="maori-word text-sm font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)', opacity: 0.7 }}>
+        Aroha mai, kei te hanga tonu
+      </span>
+      <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+        Bear with us, still being built
+      </span>
     </div>
   )
 }
@@ -399,8 +401,13 @@ function IntroScreen({ word, onStart }: { word: WordEntry; onStart: () => void }
         <span className="font-display font-bold maori-word" style={{ color: 'var(--accent)' }}>{word.maori}</span>{' '}
         in context — fill in blanks, choose tense markers, build sentences, and more.
       </p>
-      <p className="text-xs mb-5" style={{ color: 'var(--text-secondary)', opacity: 0.6 }}>
-        Exercises use placeholder content — real questions are being prepared by te reo experts.
+      <p className="mb-5">
+        <span className="block maori-word font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)', opacity: 0.7 }}>
+          Aroha mai, kei te hanga tonu
+        </span>
+        <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+          Bear with us, still being built
+        </span>
       </p>
       <button onClick={onStart} className="btn-primary">
         Tīmata — Start →

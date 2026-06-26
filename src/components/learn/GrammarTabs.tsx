@@ -68,22 +68,30 @@ function PlaceholderRow({ label, sublabel, word }: { label: string; sublabel: st
         {label}
       </span>
       <span className="text-xs block mb-2" style={{ color: 'var(--text-secondary)' }}>{sublabel}</span>
-      <span className="block font-display maori-word text-sm italic" style={{ color: 'var(--text-secondary)', opacity: 0.5 }}>
-        [Example using &ldquo;{word.maori}&rdquo; — coming soon]
+      <span className="block maori-word text-sm font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)', opacity: 0.7 }}>
+        Aroha mai, kei te hanga tonu
+      </span>
+      <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+        Bear with us, still being built
       </span>
     </TeacherBubble>
   )
 }
 
-function ComingSoonBanner({ word }: { word: WordEntry }) {
+function ComingSoonBanner({ word: _word }: { word: WordEntry }) {
   return (
-    <div className="flex items-start gap-2 rounded-xl border px-3.5 py-3 mb-4 text-xs leading-relaxed"
-      style={{ background: 'var(--terracotta-light)', borderColor: 'color-mix(in srgb, var(--terracotta) 30%, transparent)', color: 'var(--terracotta)' }}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5">
+    <div className="flex items-start gap-2 rounded-xl border px-3.5 py-3 mb-4"
+      style={{ background: 'var(--terracotta-light)', borderColor: 'color-mix(in srgb, var(--terracotta) 30%, transparent)' }}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-1" style={{ color: 'var(--terracotta)' }}>
         <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
       </svg>
       <span>
-        Grammar content for <strong className="font-display maori-word">{word.maori}</strong> is being reviewed by te reo experts and will appear here soon.
+        <span className="block maori-word font-semibold text-sm" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)' }}>
+          Aroha mai, kei te hanga tonu
+        </span>
+        <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+          Bear with us, still being built
+        </span>
       </span>
     </div>
   )
@@ -115,8 +123,11 @@ function StructureTab({ word }: { word: WordEntry }) {
         Here is how a sentence with <strong className="font-display maori-word">{word.maori}</strong> breaks down:
       </TeacherBubble>
       <TeacherBubble>
-        <span className="block font-display maori-word text-sm italic mb-3" style={{ color: 'var(--text-secondary)', opacity: 0.5 }}>
-          [Example sentence — coming soon]
+        <span className="block maori-word text-sm font-semibold mb-1" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)', opacity: 0.7 }}>
+          Aroha mai, kei te hanga tonu
+        </span>
+        <span className="block text-xs mb-3" style={{ color: 'var(--text-secondary)' }}>
+          Bear with us, still being built
         </span>
         <div className="flex flex-wrap gap-2 text-xs">
           {[
@@ -129,9 +140,6 @@ function StructureTab({ word }: { word: WordEntry }) {
             </span>
           ))}
         </div>
-        <p className="text-xs mt-2 italic" style={{ color: 'var(--text-secondary)', opacity: 0.5 }}>
-          Colour-coded breakdown coming soon
-        </p>
       </TeacherBubble>
     </div>
   )
@@ -166,8 +174,11 @@ function AffixesTab({ word }: { word: WordEntry }) {
             {a.affix} ({a.type})
           </span>
           <span className="text-xs block mb-1.5" style={{ color: 'var(--text-secondary)' }}>{a.meaning}</span>
-          <span className="block font-display maori-word text-sm" style={{ color: 'var(--text-secondary)', opacity: 0.5 }}>
-            {a.type === 'prefix' ? `${a.affix}${word.maori}` : `${word.maori}${a.affix}`} → [result coming soon]
+          <span className="block maori-word text-sm font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)', opacity: 0.7 }}>
+            Aroha mai, kei te hanga tonu
+          </span>
+          <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+            Bear with us, still being built
           </span>
         </TeacherBubble>
       ))}
@@ -184,7 +195,7 @@ function PassiveTab({ word }: { word: WordEntry }) {
         The passive is very common and important in daily speech.
       </TeacherBubble>
       <PlaceholderRow label="Active voice" sublabel={`Using "${word.maori}" actively`} word={word} />
-      <PlaceholderRow label={`Passive form of "${word.maori}"`} sublabel={`${word.maori}[-suffix] → coming soon`} word={word} />
+      <PlaceholderRow label={`Passive form of "${word.maori}"`} sublabel="Form being confirmed by te reo experts" word={word} />
     </div>
   )
 }
@@ -207,8 +218,11 @@ function PossessivesTab({ word }: { word: WordEntry }) {
             {cat}
           </span>
           <span className="text-xs block mb-1.5" style={{ color: 'var(--text-secondary)' }}>{examples}</span>
-          <span className="block font-display maori-word text-sm italic" style={{ color: 'var(--text-secondary)', opacity: 0.5 }}>
-            [Example with &ldquo;{word.maori}&rdquo; — coming soon]
+          <span className="block maori-word text-sm font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)', opacity: 0.7 }}>
+            Aroha mai, kei te hanga tonu
+          </span>
+          <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+            Bear with us, still being built
           </span>
         </TeacherBubble>
       ))}

@@ -78,18 +78,27 @@ export default function WordDetail({ word }: Props) {
       </div>
 
       {/* Examples */}
-      {word.example_sentences.length > 0 && (
-        <section className="mb-7">
-          <h2 className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--text-secondary)' }}>
-            Example sentences
-          </h2>
+      <section className="mb-7">
+        <h2 className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--text-secondary)' }}>
+          Example sentences
+        </h2>
+        {word.example_sentences.length > 0 ? (
           <div className="space-y-3">
             {word.example_sentences.map((sentence, i) => (
               <ExampleSentence key={i} sentence={sentence} index={word.example_sentences.length > 1 ? i : undefined} />
             ))}
           </div>
-        </section>
-      )}
+        ) : (
+          <div className="rounded-xl border px-5 py-4" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>
+            <p className="maori-word font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)' }}>
+              Aroha mai, kei te hanga tonu
+            </p>
+            <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
+              Bear with us, still being built
+            </p>
+          </div>
+        )}
+      </section>
 
       {/* Categories */}
       {word.categories.length > 0 && (
