@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-const REPO = 'YOUR_ORG/te-reo-dictionary'
+const REPO = 'jtamaariki-coder/te-reo-dictionary'
 
 interface FormState {
   maori: string

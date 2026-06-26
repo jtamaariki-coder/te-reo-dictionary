@@ -27,7 +27,7 @@ export default function Footer() {
               A free, community-driven dictionary for te reo Māori — built for all of Aotearoa.
             </p>
             <a
-              href="https://github.com/YOUR_ORG/te-reo-dictionary"
+              href="https://github.com/jtamaariki-coder/te-reo-dictionary"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-1.5 text-sm text-forest-600 dark:text-forest-400 hover:underline"
