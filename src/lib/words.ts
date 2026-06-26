@@ -1,6 +1,7 @@
 import type { WordEntry, Category } from '@/types/dictionary'
 import wordsData from '../../data/words.json'
 import categoriesData from '../../data/categories.json'
+import { normalise } from './macrons'
 
 const words = wordsData as WordEntry[]
 const categories = categoriesData as Category[]
@@ -10,7 +11,12 @@ export function getAllWords(): WordEntry[] {
 }
 
 export function getWordBySlug(slug: string): WordEntry | undefined {
-  return words.find((w) => w.id === slug)
+  // Exact id match first
+  const exact = words.find((w) => w.id === slug)
+  if (exact) return exact
+  // Normalised fallback: handles macron variants in the URL (e.g. /word/whānau → id "whanau")
+  const normSlug = normalise(slug)
+  return words.find((w) => normalise(w.id) === normSlug || normalise(w.maori) === normSlug)
 }
 
 export function getWordsByCategory(categorySlug: string): WordEntry[] {

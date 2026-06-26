@@ -6,7 +6,6 @@ import { getAllWords } from './words'
 type NormalisedWord = WordEntry & {
   _maori_normalised: string
   _english_normalised: string
-  _definition_normalised: string
 }
 
 function buildNormalisedWords(): NormalisedWord[] {
@@ -14,7 +13,6 @@ function buildNormalisedWords(): NormalisedWord[] {
     ...w,
     _maori_normalised: normalise(w.maori),
     _english_normalised: normalise(w.english.join(' ')),
-    _definition_normalised: normalise(w.definition),
   }))
 }
 
@@ -27,12 +25,11 @@ function getFuse(): Fuse<NormalisedWord> {
       keys: [
         { name: '_maori_normalised', weight: 3 },
         { name: '_english_normalised', weight: 2 },
-        { name: '_definition_normalised', weight: 1 },
       ],
-      threshold: 0.35,
+      threshold: 0.2,
       includeScore: true,
       ignoreLocation: true,
-      minMatchCharLength: 2,
+      minMatchCharLength: 3,
     })
   }
   return fuseInstance
@@ -44,8 +41,8 @@ export function search(query: string): WordEntry[] {
   const fuse = getFuse()
   const results = fuse.search(normalisedQuery)
   return results.map((r) => {
-    const { _maori_normalised, _english_normalised, _definition_normalised, ...word } = r.item
-    void _maori_normalised; void _english_normalised; void _definition_normalised
+    const { _maori_normalised, _english_normalised, ...word } = r.item
+    void _maori_normalised; void _english_normalised
     return word as WordEntry
   })
 }
