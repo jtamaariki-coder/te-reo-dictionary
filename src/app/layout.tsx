@@ -34,11 +34,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="mi" suppressHydrationWarning>
+    <html lang="mi" suppressHydrationWarning style={{ backgroundColor: '#F5F0E8' }}>
       <head>
+        {/* Default is LIGHT (cream). Dark mode only activates if the user has explicitly chosen it. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t===null&&d)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+            __html: `(function(){try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.backgroundColor='#0F2318';}else{document.documentElement.style.backgroundColor='#F5F0E8';}}catch(e){}})()`,
           }}
         />
       </head>

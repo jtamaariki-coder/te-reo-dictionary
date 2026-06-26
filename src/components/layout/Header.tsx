@@ -67,8 +67,8 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b backdrop-blur-sm"
-      style={{ background: 'color-mix(in srgb, var(--background) 92%, transparent)', borderColor: 'var(--border)' }}>
+    <header className="sticky top-0 z-40 w-full border-b"
+      style={{ background: 'var(--background)', borderColor: 'var(--border)' }}>
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-baseline gap-2 group">
@@ -88,7 +88,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`btn-ghost text-sm ${pathname === link.href ? 'font-semibold bg-forest-100 dark:bg-forest-900' : ''}`}
+              className={`btn-ghost text-sm ${pathname === link.href ? 'font-semibold bg-[var(--muted)]' : ''}`}
             >
               {link.label}
             </Link>
@@ -133,7 +133,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={`btn-ghost text-sm py-2.5 ${pathname === link.href ? 'font-semibold bg-forest-100 dark:bg-forest-900' : ''}`}
+              className={`btn-ghost text-sm py-2.5 ${pathname === link.href ? 'font-semibold bg-[var(--muted)]' : ''}`}
             >
               {link.label}
             </Link>
