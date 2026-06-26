@@ -95,6 +95,10 @@
            transition-colors duration-150;
   }
 
+  .text-muted {
+    color: var(--text-secondary);
+  }
+
   /* Chat bubble components */
   .bubble-teacher {
     background-color: var(--card);
