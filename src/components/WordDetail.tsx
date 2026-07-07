@@ -91,10 +91,12 @@ export default function WordDetail({ word }: Props) {
         ) : (
           <div className="rounded-xl border px-5 py-4" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>
             <p className="maori-word font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)' }}>
-              Aroha mai, kei te hanga tonu
+              🚧 SECTION UNDER CONSTRUCTION
             </p>
             <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
-              Bear with us, still being built
+              This exercise hasn't been built yet.
+
+Help me build it by contributing examples.
             </p>
           </div>
         )}

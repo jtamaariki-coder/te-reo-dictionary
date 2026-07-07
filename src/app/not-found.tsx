@@ -7,10 +7,12 @@ export default function NotFound() {
       <h1 className="text-4xl mb-4" style={{ fontFamily: 'Georgia, serif' }}>Kāore i kitea</h1>
       <p className="mb-8">
         <span className="block maori-word text-lg font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)' }}>
-          Aroha mai, kei te hanga tonu
+          🚧 SECTION UNDER CONSTRUCTION
         </span>
         <span className="block text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>
-          Bear with us, still being built
+          This exercise hasn't been built yet.
+
+Help me build it by contributing examples.
         </span>
       </p>
       <div className="flex gap-4">

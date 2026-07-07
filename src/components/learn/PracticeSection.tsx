@@ -133,10 +133,12 @@ function PlaceholderBadge() {
   return (
     <div className="mb-3">
       <span className="maori-word text-sm font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)', opacity: 0.7 }}>
-        Aroha mai, kei te hanga tonu
+        🚧 SECTION UNDER CONSTRUCTION
       </span>
       <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
-        Bear with us, still being built
+        This exercise hasn't been built yet.
+
+Help me build it by contributing examples.
       </span>
     </div>
   )
@@ -403,10 +405,12 @@ function IntroScreen({ word, onStart }: { word: WordEntry; onStart: () => void }
       </p>
       <p className="mb-5">
         <span className="block maori-word font-semibold" style={{ fontFamily: 'Georgia, serif', color: 'var(--accent)', opacity: 0.7 }}>
-          Aroha mai, kei te hanga tonu
+          🚧 SECTION UNDER CONSTRUCTION
         </span>
         <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
-          Bear with us, still being built
+          This exercise hasn't been built yet.
+
+Help me build it by contributing examples.
         </span>
       </p>
       <button onClick={onStart} className="btn-primary">
